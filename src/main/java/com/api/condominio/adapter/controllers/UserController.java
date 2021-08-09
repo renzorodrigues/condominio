@@ -4,18 +4,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.json.JSONObject;
+import com.api.condominio.core.entities.User;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping("/users")
 public class UserController {
 
     @GetMapping
-	public ResponseEntity<String> get() {
+	public ResponseEntity<User> get() {
 		
-		var obj = new JSONObject().put("name", "John");
+		var obj = new User();
+		obj.name = "John";
 
-	    return ResponseEntity.ok().body(obj.toString());
+	    return ResponseEntity.ok().body(obj);
 	}
     
 }
